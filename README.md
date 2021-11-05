@@ -23,16 +23,13 @@ yarn dev
 - ⚛️ [React](https://reactjs.org/)
 - ▲ [NextJS](https://nextjs.org/) (with [Static Export](https://nextjs.org/docs/advanced-features/static-html-export))
 - 📕 [Storybook](https://storybook.js.org/)
-- ⚛️ [React Router](https://reactrouter.com/)
 - ⚡️ [Chakra UI](https://chakra-ui.com/)
-- ⚛️ [React Query](https://react-query.tanstack.com/)
 - 🐜 [Formiz](https://formiz-react.com/)
 - 💥 [React Error Boundary](https://github.com/bvaughn/react-error-boundary)
 - ⭐️ [React Icons](https://react-icons.github.io/react-icons/)
 - 🌍 [React i18next](https://react.i18next.com/)
 - 🔽 [React Select](https://react-select.com/)
 - 🔢 [React Currency Input Field](https://github.com/cchanxzy/react-currency-input-field)
-- ↔ [Axios](https://github.com/axios/axios)
 - 📅 [Day.js](https://day.js.org/)
 
 👉 [Technology Choices](#technology-choices)
@@ -237,13 +234,6 @@ bundling, route pre-fetching, and more. No config needed.
 
 [GitHub](https://github.com/vercel/next.js) · [License MIT](https://github.com/vercel/next.js/blob/canary/license.md)
 
-### React Router
-
-Next.js is bundled with its own router, but at the time of writing those lines,
-it does not allow nested routes using a shared layout.
-
-[GitHub](https://github.com/ReactTraining/react-router) · [License MIT](https://github.com/ReactTraining/react-router/blob/master/LICENSE)
-
 ### TypeScript
 
 JavaScript is a not typed language. [TypeScript](https://www.typescriptlang.org/)
@@ -254,16 +244,6 @@ writing in TypeScript is not mandatory to use Start UI, but it is a good
 practice to do so to avoid bugs in the future.
 
 [GitHub](https://github.com/microsoft/TypeScript) · [License Apache 2.0](https://github.com/microsoft/TypeScript/blob/master/LICENSE.txt)
-
-### React Query
-
-[React Query](https://github.com/tannerlinsley/react-query) is a powerful tool
-to do efficient data synchronization for React. No need of Redux
-or another global state manager anymore. Usable with [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API),
-[`axios`](https://github.com/axios/axios), or [`graphql-request`](https://github.com/prisma-labs/graphql-request),
-React Query will do the work and is agnostic of the method you will use.
-
-[GitHub](https://github.com/tannerlinsley/react-query) · [License MIT](https://github.com/tannerlinsley/react-query/blob/master/LICENSE)
 
 ### Storybook
 
