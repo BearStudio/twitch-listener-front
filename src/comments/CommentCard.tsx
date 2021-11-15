@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Button, Flex, HStack, Stack, Text, Tooltip } from '@chakra-ui/react';
+import { Button, Flex, HStack, Stack, Text } from '@chakra-ui/react';
 import { QueryDocumentSnapshot, updateDoc } from '@firebase/firestore';
 
 import { CommentDoc } from './comments.type';
@@ -49,30 +49,20 @@ export const CommentCard: FC<{
         <Text>{comment.message}</Text>
       </Stack>
       <HStack spacing="4">
-        <Tooltip
-          label={
-            comment.isQuestion ? 'Retirer des questions' : 'Ajouter en question'
-          }
-          openDelay={500}
+        <Button
+          colorScheme={comment.isQuestion ? 'green' : 'brand'}
+          onClick={handleAddQuestion}
+          size="sm"
         >
-          <Button
-            colorScheme={comment.isQuestion ? 'green' : 'brand'}
-            onClick={handleAddQuestion}
-          >
-            ❓
-          </Button>
-        </Tooltip>
-        <Tooltip
-          label={comment.isLive ? 'Retirer du live' : 'Afficher sur le live'}
-          openDelay={500}
+          ❓
+        </Button>
+        <Button
+          colorScheme={comment.isLive ? 'red' : 'brand'}
+          onClick={handleShowLive}
+          size="sm"
         >
-          <Button
-            colorScheme={comment.isLive ? 'red' : 'brand'}
-            onClick={handleShowLive}
-          >
-            🔴
-          </Button>
-        </Tooltip>
+          🔴
+        </Button>
       </HStack>
     </Flex>
   );
