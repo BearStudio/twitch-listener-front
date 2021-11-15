@@ -1,17 +1,7 @@
 import { FC } from 'react';
 
-import {
-  Button,
-  Flex,
-  HStack,
-  IconButton,
-  Stack,
-  Text,
-  Tooltip,
-} from '@chakra-ui/react';
+import { Button, Flex, HStack, Stack, Text, Tooltip } from '@chakra-ui/react';
 import { QueryDocumentSnapshot, updateDoc } from '@firebase/firestore';
-import { BsFillCircleFill } from 'react-icons/bs';
-import { FaQuestion } from 'react-icons/fa';
 
 import { CommentDoc } from './comments.type';
 
