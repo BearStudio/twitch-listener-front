@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Box, Text, useTheme } from '@chakra-ui/react';
 import Head from 'next/head';
 

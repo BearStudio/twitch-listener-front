@@ -17,7 +17,7 @@ export const styles = {
       bg: 'gray.800',
     },
     body: {
-      bg: mode('gray.50', 'gray.800')(props),
+      bg: mode('brand.50', 'brand.800')(props),
       WebkitTapHighlightColor: 'transparent',
     },
     '#chakra-toast-portal > *': {
