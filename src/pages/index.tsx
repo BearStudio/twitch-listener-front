@@ -2,8 +2,8 @@ import {
   Box,
   Center,
   CircularProgress,
+  Flex,
   SimpleGrid,
-  Stack,
   Text,
 } from '@chakra-ui/react';
 import Head from 'next/head';
@@ -14,6 +14,12 @@ import {
   useGetCommentsQuestion,
 } from '@/comments/comments.service';
 import { RowVirtualizerDynamic } from '@/components/RowVirtualizerDynamic';
+
+const ListWrapper = ({ children }) => (
+  <Flex direction="column" minH="0" maxHeight="100vh" p="4">
+    {children}
+  </Flex>
+);
 
 const Index = () => {
   const [comments, loading, error] = useGetComments();
@@ -31,30 +37,30 @@ const Index = () => {
           <CircularProgress isIndeterminate color="brand.300" />
         </Center>
       )}
-      <SimpleGrid columns={3} spacing={10} m="4">
+      <SimpleGrid columns={3} spacing={4}>
         {comments && (
-          <Stack>
+          <ListWrapper>
             <Text fontSize="lg" fontWeight="bold">
               💬 Messages
             </Text>
             <RowVirtualizerDynamic rows={comments.docs} />
-          </Stack>
+          </ListWrapper>
         )}
         {questions && (
-          <Stack>
+          <ListWrapper>
             <Text fontSize="lg" fontWeight="bold">
               ❓ Questions
             </Text>
             <RowVirtualizerDynamic rows={questions.docs} />
-          </Stack>
+          </ListWrapper>
         )}
         {live && (
-          <Stack>
+          <ListWrapper>
             <Text fontSize="lg" fontWeight="bold">
               🔴 On Stream
             </Text>
             <RowVirtualizerDynamic rows={live.docs} />
-          </Stack>
+          </ListWrapper>
         )}
       </SimpleGrid>
 

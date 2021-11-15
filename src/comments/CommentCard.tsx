@@ -22,17 +22,17 @@ export const CommentCard: FC<{
     });
   };
 
-  const getColorScheme = () => {
+  const getBackground = () => {
     if (comment.isLive) {
-      return 'red';
+      return 'red.800';
     }
     if (comment.isQuestion) {
-      return 'green';
+      return 'green.800';
     }
 
-    return 'brand';
+    return 'transparent';
   };
-  const colorScheme = getColorScheme();
+  const background = getBackground();
 
   return (
     <Flex
@@ -40,7 +40,7 @@ export const CommentCard: FC<{
       justify="space-between"
       alignItems="center"
       p="4"
-      bg={`${colorScheme}.800`}
+      bg={background}
     >
       <Stack>
         <Text fontWeight="bold" fontSize="sm">

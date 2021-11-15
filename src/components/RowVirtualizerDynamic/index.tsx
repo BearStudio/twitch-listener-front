@@ -1,6 +1,6 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Button, Checkbox, Flex } from '@chakra-ui/react';
 import { QueryDocumentSnapshot } from '@firebase/firestore';
 import { useVirtual } from 'react-virtual';
 
@@ -12,6 +12,8 @@ export function RowVirtualizerDynamic({
 }: {
   rows: Array<QueryDocumentSnapshot>;
 }) {
+  const [doesStickToBottom, setDoesStickToBottom] = useState(true);
+
   const parentRef = useRef();
 
   const rowVirtualizer = useVirtual({
@@ -19,28 +21,28 @@ export function RowVirtualizerDynamic({
     parentRef,
   });
 
+  useEffect(() => {
+    if (doesStickToBottom) {
+      rowVirtualizer.scrollToIndex(rows.length - 1);
+    }
+  }, [doesStickToBottom, rowVirtualizer, rows]);
+
   return (
-    <>
-      <Box
-        maxH="90vh"
-        overflow="auto"
-        ref={parentRef}
-        borderRadius="md"
-        {...rest}
-      >
+    <Flex minH="0" direction="column" flex="1" justifyContent="space-between">
+      <Box overflow="auto" ref={parentRef} borderRadius="md" my="4" {...rest}>
         <Box
           position="relative"
           width="100%"
           height={`${rowVirtualizer.totalSize}px`}
         >
-          {rowVirtualizer.virtualItems.map((virtualRow) => {
+          {rowVirtualizer.virtualItems.map((virtualRow, index) => {
             const comment = rows[virtualRow.index];
 
             return (
               <Flex
                 key={virtualRow.index}
                 ref={virtualRow.measureRef}
-                bg={'brand.700'}
+                bg={index % 2 === 0 ? 'brand.700' : 'brand.800'}
                 color="white"
                 position="absolute"
                 top="0"
@@ -48,7 +50,7 @@ export function RowVirtualizerDynamic({
                 width="100%"
                 transform={`translateY(${virtualRow.start}px)`}
                 borderTop="1px solid"
-                borderColor="brand.500"
+                borderColor="white"
               >
                 <CommentCard document={comment} />
               </Flex>
@@ -56,6 +58,26 @@ export function RowVirtualizerDynamic({
           })}
         </Box>
       </Box>
-    </>
+
+      {rows.length !== 0 && (
+        <Flex
+          direction={{ base: 'column', md: 'row' }}
+          justifyContent="space-around"
+        >
+          <Checkbox
+            px="4"
+            borderRadius="md"
+            bg={doesStickToBottom ? 'brand.200' : 'brand.100'}
+            defaultIsChecked={doesStickToBottom}
+            onChange={() => setDoesStickToBottom((v) => !v)}
+          >
+            Stick to bottom
+          </Checkbox>
+          <Button onClick={() => rowVirtualizer.scrollToIndex(rows.length - 1)}>
+            Scroll to bottom
+          </Button>
+        </Flex>
+      )}
+    </Flex>
   );
 }
