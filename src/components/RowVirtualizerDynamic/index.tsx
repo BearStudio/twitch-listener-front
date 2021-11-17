@@ -71,7 +71,7 @@ export function RowVirtualizerDynamic({
           <Checkbox
             px="4"
             borderRadius="md"
-            bg={doesStickToBottom ? 'brand.200' : 'brand.100'}
+            bg={doesStickToBottom ? 'brand.800' : 'brand.700'}
             defaultIsChecked={doesStickToBottom}
             onChange={() => setDoesStickToBottom((v) => !v)}
           >
