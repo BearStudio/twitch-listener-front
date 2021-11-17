@@ -18,19 +18,19 @@ export default function Live() {
   return (
     <Center flex="1" bg="green">
       <ScaleFade in={comment?.isLive} transition={{ enter: { duration: 0.3 } }}>
-        <Stack spacing="0" minW="40vw">
-          <Box
-            bg="brand.600"
-            color="brand.50"
-            px="4"
-            py="2"
-            borderTopRadius="2xl"
-          >
+        <Stack
+          spacing="0"
+          minW="40vw"
+          border="2px solid white"
+          borderRadius="2xl"
+          overflow="hidden"
+        >
+          <Box bg="brand.600" color="brand.50" px="4" py="2">
             <Text fontSize="3xl" fontWeight="bold" color="white">
               {comment.username}
             </Text>
           </Box>
-          <Box bg="white" color="brand.900" borderBottomRadius="2xl">
+          <Box bg="white" color="brand.900">
             <Text px="4" py="2" fontSize="3xl">
               {comment.message}
             </Text>
