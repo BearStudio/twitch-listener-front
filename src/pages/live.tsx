@@ -6,7 +6,9 @@ import { CommentDoc } from '@/comments/comments.type';
 export default function Live() {
   const [liveComments] = useGetCommentLive();
 
-  if (!liveComments || liveComments.docs.length === 0) return '';
+  if (!liveComments || liveComments.docs.length === 0) {
+    return <Center flex="1" bg="green" />;
+  }
 
   // Get only the last comment displayed live
   const comment = liveComments.docs[
