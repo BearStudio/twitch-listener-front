@@ -29,27 +29,31 @@ export function RowVirtualizerDynamic({
 
   return (
     <Flex minH="0" direction="column" flex="1" justifyContent="space-between">
-      <Box overflow="auto" ref={parentRef} borderRadius="md" my="4" {...rest}>
+      <Box overflow="auto" ref={parentRef} my="4" {...rest}>
         <Box
           position="relative"
           width="100%"
           height={`${rowVirtualizer.totalSize}px`}
         >
-          {rowVirtualizer.virtualItems.map((virtualRow, index) => {
+          {rowVirtualizer.virtualItems.map((virtualRow) => {
             const comment = rows[virtualRow.index];
 
             return (
               <Flex
                 key={virtualRow.index}
                 ref={virtualRow.measureRef}
-                bg={index % 2 === 0 ? 'brand.700' : 'brand.800'}
+                bg={virtualRow.index % 2 === 0 ? 'brand.700' : 'brand.800'}
                 color="white"
                 position="absolute"
                 top="0"
                 left="0"
                 width="100%"
                 transform={`translateY(${virtualRow.start}px)`}
-                borderTop="1px solid"
+                border="1px solid"
+                borderBottom="none"
+                _last={{
+                  borderBottom: '1px solid',
+                }}
                 borderColor="white"
               >
                 <CommentCard document={comment} />
