@@ -18,7 +18,7 @@ export default function Live() {
   return (
     <Center flex="1" bg="green">
       <ScaleFade in={comment?.isLive} transition={{ enter: { duration: 0.3 } }}>
-        <Stack spacing="0">
+        <Stack spacing="0" minW="40vw">
           <Box
             bg="brand.600"
             color="brand.50"
