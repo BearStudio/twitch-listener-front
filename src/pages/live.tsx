@@ -14,7 +14,7 @@ export default function Live() {
   ].data() as CommentDoc;
 
   return (
-    <Center flex="1">
+    <Center flex="1" bg="green">
       <ScaleFade in={comment?.isLive} transition={{ enter: { duration: 0.3 } }}>
         <Stack spacing="0">
           <Box
